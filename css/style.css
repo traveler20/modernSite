@@ -1,0 +1,33 @@
+body {
+	position: relative;
+	/*もともとあるカーソルは見えなくなるようにする*/
+	cursor: none;
+}
+
+.cursor,
+.follower {
+	border-radius: 50%;
+	/*bodyの一番左上になるように配置する*/
+	position: absolute;
+	top: 0;
+	left: 0;
+	/*もともとあるカーソルは見えなくなるようにする*/
+	cursor: none;
+	/*他の要素がクリックできなくならないように*/
+	pointer-events: none;
+}
+
+.cursor {
+	width: 8px;
+	height: 8px;
+	background-color: #000;
+	/*どの要素よりも一番上になるようにする*/
+	z-index: 1001;
+}
+.follower {
+	width: 40px;
+	height: 40px;
+	background-color: #fdfe00;
+	/*カーソルの次に上になるようにする*/
+	z-index: 1000;
+}
