@@ -1,0 +1,200 @@
+/*------------------------------------------------------
+ * base
+ ------------------------------------------------------*/
+html {
+	font-size: 62.5%;
+}
+body {
+	position: relative;
+	/*もともとあるカーソルは見えなくなるようにする*/
+	cursor: none;
+}
+
+/*------------------------------------------------------
+ * loading
+ ------------------------------------------------------*/
+/* Loading Block */
+#loading {
+	width: 100vw;
+	height: 100vh;
+	transition: all 1s;
+	background-color: #0bd;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+}
+.spinner {
+	width: 100px;
+	height: 100px;
+	margin: 200px auto;
+	background-color: #fff;
+	border-radius: 100%;
+	animation: sk-scaleout 1s infinite ease-in-out;
+}
+/* Loading Animation */
+@keyframes sk-scaleout {
+	0% {
+		transform: scale(0);
+	}
+	100% {
+		transform: scale(1);
+		opacity: 0;
+	}
+}
+
+/* Hide Loading Block */
+.loaded {
+	opacity: 0;
+	visibility: hidden;
+}
+
+/*------------------------------------------------------
+ * cursor
+ ------------------------------------------------------*/
+.cursor,
+.follower {
+	border-radius: 50%;
+	/*bodyの一番左上になるように配置する*/
+	position: absolute;
+	top: 0;
+	left: 0;
+	/*もともとあるカーソルは見えなくなるようにする*/
+	cursor: none;
+	/*他の要素がクリックできなくならないように*/
+	pointer-events: none;
+}
+.cursor {
+	width: 8px;
+	height: 8px;
+	background-color: #000;
+	/*どの要素よりも一番上になるようにする*/
+	z-index: 1001;
+}
+.follower {
+	width: 40px;
+	height: 40px;
+	background-color: #ff0033;
+	/*カーソルの次に上になるようにする*/
+	z-index: 1000;
+}
+
+/*------------------------------------------------------
+ * 
+ ------------------------------------------------------*/
+@import url("https://fonts.googleapis.com/css?family=Alfa+Slab+One");
+.cp_anime15 {
+	font-family: "Alfa Slab One", cursive;
+	font-size: 2.4rem;
+	text-align: left;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	display: flex;
+}
+.cp_anime15 p {
+	color: #222222;
+}
+.cp_anime15 .scroller {
+	line-height: 1.5em;
+	overflow: hidden;
+	height: 1.5em;
+	margin: 1em 0 0 7px;
+}
+.cp_anime15 .scroller span {
+	display: block;
+	color: #222222;
+}
+.cp_anime15 .scroller .inner {
+	-webkit-animation: anime15_scroll 5s infinite ease-out;
+	animation: anime15_scroll 5s infinite ease-out;
+}
+.cp_anime15 .scroller .inner::after {
+	position: absolute;
+	top: 1em;
+	left: 8em;
+	content: "🎉";
+	color: #b10d0d;
+}
+@-webkit-keyframes anime15_scroll {
+	15% {
+		margin-top: 0px;
+	}
+	30% {
+		margin-top: 0px;
+	}
+	45% {
+		margin-top: -1.5em;
+	}
+	60% {
+		margin-top: -1.5em;
+	}
+	75% {
+		margin-top: -3em;
+	}
+	90% {
+		margin-top: -3em;
+	}
+	100% {
+		margin-top: 0px;
+	}
+}
+@keyframes anime15_scroll {
+	15% {
+		margin-top: 0px;
+	}
+	30% {
+		margin-top: 0px;
+	}
+	45% {
+		margin-top: -1.5em;
+	}
+	60% {
+		margin-top: -1.5em;
+	}
+	75% {
+		margin-top: -3em;
+	}
+	90% {
+		margin-top: -3em;
+	}
+	100% {
+		margin-top: 0px;
+	}
+}
+/*------------------------------------------------------
+ * 
+ ------------------------------------------------------*/
+/* .btn {
+	position: relative;
+	width: 280px;
+	height: 80px;
+	margin: 0 auto;
+	display: block;
+	border-radius: 12px;
+	overflow: hidden;
+	cursor: pointer;
+}
+.btn img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+  display: block;
+	-webkit-transition: .4s ease-in-out;
+	transition: .4s ease-in-out;
+}
+.btn img:nth-of-type(1) {
+  top: -100%;
+}
+.btn img:nth-of-type(2) {
+  top: 0;
+}
+.btn:hover img:nth-of-type(1) {
+  top: 0;
+}
+.btn:hover img:nth-of-type(2) {
+  top: 100%;
+} */
