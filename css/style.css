@@ -3,22 +3,52 @@
  ------------------------------------------------------*/
 html {
 	font-size: 62.5%;
+	position: relative;
+	cursor: none; /*本物のカーソルを非表示に*/
+	min-height: 100vh;
+}
+html a:hover {
+	cursor: none;
 }
 body {
 	position: relative;
-	/*もともとあるカーソルは見えなくなるようにする*/
-	cursor: none;
+}
+header {
+	height: 50vh;
+	background-color: #333;
+}
+#content {
+	display: flex;
+}
+main {
+	width: 80%;
+	margin: 0 auto;
+}
+aside {
+	width: 20%;
+	min-width: 250px;
+	display: flex;
+	flex-direction: column;
+}
+nav ul {
+	font-size: 2.4rem;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+footer {
+	display: none;
 }
 
 /*------------------------------------------------------
  * loading
  ------------------------------------------------------*/
 /* Loading Block */
-#loading {
+#js-loading {
 	width: 100vw;
 	height: 100vh;
 	transition: all 1s;
-	background-color: #0bd;
+	background-color: #f43e43;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -52,73 +82,69 @@ body {
 /*------------------------------------------------------
  * cursor
  ------------------------------------------------------*/
-.cursor,
-.follower {
+#js-cursor {
 	border-radius: 50%;
 	/*bodyの一番左上になるように配置する*/
 	position: absolute;
 	top: 0;
 	left: 0;
-	/*もともとあるカーソルは見えなくなるようにする*/
 	cursor: none;
 	/*他の要素がクリックできなくならないように*/
 	pointer-events: none;
-}
-.cursor {
 	width: 8px;
 	height: 8px;
-	background-color: #000;
+	background-color: #454545;
 	/*どの要素よりも一番上になるようにする*/
 	z-index: 1001;
+	/* border: 16px solid #f43e43; */
+	background-clip: padding-box;
+	border: 16px solid rgba(244, 62, 67, 0.8);
 }
-.follower {
-	width: 40px;
-	height: 40px;
-	background-color: #ff0033;
-	/*カーソルの次に上になるようにする*/
-	z-index: 1000;
+#js-cursor.active {
+	transform: scale(1.8);
 }
 
 /*------------------------------------------------------
- * 
+ * textanimation
  ------------------------------------------------------*/
 @import url("https://fonts.googleapis.com/css?family=Alfa+Slab+One");
-.cp_anime15 {
+.textanimation {
 	font-family: "Alfa Slab One", cursive;
-	font-size: 2.4rem;
+	font-size: 5.6rem;
 	text-align: left;
 	position: absolute;
-	top: 50%;
+	top: 15%;
 	left: 50%;
+	width: 80%;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	display: flex;
 }
-.cp_anime15 p {
-	color: #222222;
+.textanimation p {
+	color: #454545;
 }
-.cp_anime15 .scroller {
+.textanimation .textanimation_scroller {
 	line-height: 1.5em;
 	overflow: hidden;
 	height: 1.5em;
-	margin: 1em 0 0 7px;
+	margin: 0 0 0 0.7rem;
 }
-.cp_anime15 .scroller span {
+.textanimation .textanimation_scroller span {
 	display: block;
-	color: #222222;
+	color: #454545;
 }
-.cp_anime15 .scroller .inner {
-	-webkit-animation: anime15_scroll 5s infinite ease-out;
-	animation: anime15_scroll 5s infinite ease-out;
+.textanimation .textanimation_scroller .textanimation_inner {
+	-webkit-animation: textanimation_scroll 5s infinite ease-out;
+	animation: textanimation_scroll 5s infinite ease-out;
 }
-.cp_anime15 .scroller .inner::after {
+/* .textanimation .textanimation_scroller .textanimation_inner::after {
 	position: absolute;
 	top: 1em;
 	left: 8em;
 	content: "🎉";
-	color: #b10d0d;
-}
-@-webkit-keyframes anime15_scroll {
+	color: #c8c8c8;
+} */
+@-webkit-keyframes textanimation_scroll {
 	15% {
 		margin-top: 0px;
 	}
@@ -141,7 +167,7 @@ body {
 		margin-top: 0px;
 	}
 }
-@keyframes anime15_scroll {
+@keyframes textanimation_scroll {
 	15% {
 		margin-top: 0px;
 	}
@@ -198,3 +224,47 @@ body {
 .btn:hover img:nth-of-type(2) {
   top: 100%;
 } */
+/*レスポンシブ（ナビを下に固定）*/
+@media screen and (max-width: 1000px) {
+	html {
+		cursor: auto;
+	}
+	#js-cursor {
+		display: none;
+	}
+	body {
+		height: 1500px;
+		flex-direction: column;
+	}
+	main {
+		width: 100%;
+		flex: 1;
+	}
+	footer {
+		display: block;
+		/*ナビ分の余白を残す*/
+		margin-bottom: 48px;
+	}
+
+	/*固定ナビのスタイリング*/
+	aside {
+		/*固定する*/
+		position: fixed;
+		/*下に0*/
+		bottom: 0;
+		/*横幅いっぱいに*/
+		width: 100%;
+	}
+	/*listは横並びに設定*/
+	ul {
+		display: flex;
+	}
+	/*flex:1;で伸び縮みするように設定*/
+	li {
+		flex: 1;
+	}
+
+	.textanimation {
+		font-size: 3.6rem;
+	}
+}
